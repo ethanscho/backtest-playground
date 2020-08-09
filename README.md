@@ -1,5 +1,14 @@
 # Backtest playground
 
+## Setup
+```
+git clone https://github.com/ethanscho/backtest-playground.git
+cd backtest-playground
+
+git submodule update --init --recursive
+```
+
+## Models
 ### GP/A + 1/PBR 
 - 시총하위 20%
 - 상위 종목 30개 
