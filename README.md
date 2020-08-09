@@ -4,8 +4,7 @@
 ```
 git clone https://github.com/ethanscho/backtest-playground.git
 cd backtest-playground
-
-git submodule update --init --recursive
+git clone https://github.com/FinanceData/marcap.git
 ```
 
 ## Models
