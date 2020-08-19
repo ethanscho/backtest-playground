@@ -32,8 +32,9 @@ run backtest.ipynb
 ### PBR + PCR + PER + PSR
 - 시총하위 20%
 - 상위 종목 30개 
+- 유동비율 100% 이상
 - 1년에 1번, 매년 8/1 리밸런싱
-- CAGR: 28.67%
+- CAGR: 32.42%
 
 ```
 run backtest.ipynb 
