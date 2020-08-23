@@ -18,7 +18,7 @@ def get_stocks(filepath, date, verbose=True):
 #         col_name = str(year) + '-' + '당기순이익'
 #         past_income_cols.append(col_name)
         
-    cols = ['종목코드', 'IFRS', 'CFS', '회사명', '시가총액', 'PBR', 'GP/A', '당기순이익', '증자', '영업활동으로인한현금흐름', '유동비율']
+    cols = ['종목코드', 'IFRS', 'CFS', '회사명', '시가총액', 'PBR', 'GP/A', '당기순이익', '증자', '영업활동으로인한현금흐름', '유동비율', '주당배당금']
     #cols.extend(past_income_cols)
 
     df = df[cols]
@@ -39,7 +39,10 @@ def get_stocks(filepath, date, verbose=True):
 #     df = df[df['유동비율'] > 1.0]
 #     if verbose:
 #         print('유동비율 > 1', len(df))
-    
+        
+#     # 주당배당금 > 0
+#     df = df[df['주당배당금'] > 0.0]
+
 #     # 전년도 증자 기업 제외
 #     df_qp = df_qp[df_qp['증자'] == 0]
 #     print('증자기업 제외', len(df_qp))
@@ -54,9 +57,6 @@ def get_stocks(filepath, date, verbose=True):
     
     # 당기순이익 최근 5년 +인것만
     #df_qp = exclude_minus_income_corps(df_qp, past_income_cols)
-    
-    # 재무데이터 없는 기업 제외
-    df = df[df['GP/A'] != 0]
 
     # 시가총액 하위 20% 
     #df_qp = df_qp[(df_qp['IFRS'] == 1) & (df_qp['CFS'] == 1)] # 국제회계기준 + 연결재무제표 기업만
