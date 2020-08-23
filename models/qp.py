@@ -54,6 +54,9 @@ def get_stocks(filepath, date, verbose=True):
     
     # 당기순이익 최근 5년 +인것만
     #df_qp = exclude_minus_income_corps(df_qp, past_income_cols)
+    
+    # 재무데이터 없는 기업 제외
+    df = df[df['GP/A'] != 0]
 
     # 시가총액 하위 20% 
     #df_qp = df_qp[(df_qp['IFRS'] == 1) & (df_qp['CFS'] == 1)] # 국제회계기준 + 연결재무제표 기업만
