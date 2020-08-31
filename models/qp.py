@@ -59,11 +59,8 @@ def get_stocks(filepath, date, verbose=True):
     #df_qp = exclude_minus_income_corps(df_qp, past_income_cols)
 
     # 시가총액 하위 20% 
-    #df_qp = df_qp[(df_qp['IFRS'] == 1) & (df_qp['CFS'] == 1)] # 국제회계기준 + 연결재무제표 기업만
     df = df[df['시가총액'] > 0] # 시가총액 data가 없는 row는 제거
     df = df.sort_values(by=['시가총액'])
-    if verbose:
-        print('가격정보 없는 기업 제외', len(df))
     df = df[int(len(df)*MIN_MARKET_CAP):int(len(df)*MAX_MARKET_CAP)]
     
     # get ranks
