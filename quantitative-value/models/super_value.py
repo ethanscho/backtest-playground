@@ -27,10 +27,10 @@ def get_stocks(filepath, date, verbose=True):
     if verbose:
         print('국외주식 제외', len(df_qp))
     
-    # 유동비율 > 100%
-    df_qp = df_qp[df_qp['유동비율'] > 1.0]
+    # 유동비율 
+    df_qp = df_qp[df_qp['유동비율'] > 1.5]
     if verbose:
-        print('유동비율 > 1', len(df_qp))
+        print('유동비율', len(df_qp))
     
     # 시가총액 하위 20% 
     df_qp = df_qp[df_qp['시가총액'] > 0] # 시가총액 data가 없는 row는 제거

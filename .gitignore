@@ -1,2 +1,8 @@
 .ipynb_checkpoints/
+__pycache__/
 log/
+*.pyc
+data/daily/7-1
+data/daily/9-1
+data/daily/11-1
+data/daily/12-1
