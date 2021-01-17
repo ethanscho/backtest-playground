@@ -86,7 +86,6 @@ def get_stocks(filepath, date, verbose=True):
         stocks.append(candidate)
     
     if verbose:
-        print("선정 기업 수", len(stocks))
-    else:
         print(date, "선정 기업 수", len(stocks))
+        
     return stocks
