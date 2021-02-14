@@ -35,8 +35,8 @@ def get_stocks(filepath, date, verbose=True):
     if verbose:
         print('국외주식 제외', len(df))
     
-#     # 유동비율 > 100%
-#     df = df[df['유동비율'] > 1.0]
+#     # 유동비율 > 150%
+#     df = df[df['유동비율'] > 1.5]
 #     if verbose:
 #         print('유동비율 > 1', len(df))
         
