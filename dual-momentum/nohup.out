@@ -1,0 +1,35 @@
+/home/pi/.local/lib/python3.7/site-packages/jupyter_server/services/kernels/kernelmanager.py:19: VisibleDeprecationWarning: zmq.eventloop.minitornado is deprecated in pyzmq 14.0 and will be removed.
+    Install tornado itself to use zmq with the tornado IOLoop.
+    
+  from jupyter_client.session import Session
+[Voila] Using /tmp to store connection files
+[Voila] Storing connection files in /tmp/voila_m1mwswrz.
+[Voila] Serving static files from /home/pi/.local/lib/python3.7/site-packages/voila/static.
+[Voila] The port 8866 is already in use, trying another port.
+[Voila] Voilà is running at:
+http://localhost:8867/
+[Voila] Kernel started: 74671537-f9d4-4561-b878-132cfec7cf17
+/usr/lib/python3/dist-packages/ipykernel_launcher.py:15: VisibleDeprecationWarning: zmq.eventloop.minitornado is deprecated in pyzmq 14.0 and will be removed.
+    Install tornado itself to use zmq with the tornado IOLoop.
+    
+  from ipykernel import kernelapp as app
+WARNING:tornado.general:404 GET /api/kernels/cf6633fc-6b52-49c7-a7ff-9e1514d5a82a/channels?session_id=75659d1f-3d91-4e21-b280-188bc546989a (192.168.0.5): Kernel does not exist: cf6633fc-6b52-49c7-a7ff-9e1514d5a82a
+WARNING:tornado.access:404 GET /api/kernels/cf6633fc-6b52-49c7-a7ff-9e1514d5a82a/channels?session_id=75659d1f-3d91-4e21-b280-188bc546989a (192.168.0.5) 26.49ms
+WARNING:tornado.general:403 GET /voila/files/favicon.ico (::1): File not whitelisted
+WARNING:tornado.access:403 GET /voila/files/favicon.ico (::1) 2.75ms
+[Voila] Adapting from protocol version 5.1 (kernel 74671537-f9d4-4561-b878-132cfec7cf17) to 5.3 (client).
+[Voila] Kernel started: dd985352-3719-4801-a55d-4cf2325d44c6
+WARNING:tornado.general:404 DELETE /api/kernels/cf6633fc-6b52-49c7-a7ff-9e1514d5a82a?1611291914388 (192.168.0.5): Kernel does not exist: cf6633fc-6b52-49c7-a7ff-9e1514d5a82a
+[Voila] WARNING | Kernel does not exist: cf6633fc-6b52-49c7-a7ff-9e1514d5a82a
+WARNING:tornado.access:404 DELETE /api/kernels/cf6633fc-6b52-49c7-a7ff-9e1514d5a82a?1611291914388 (192.168.0.5) 701.69ms
+/usr/lib/python3/dist-packages/ipykernel_launcher.py:15: VisibleDeprecationWarning: zmq.eventloop.minitornado is deprecated in pyzmq 14.0 and will be removed.
+    Install tornado itself to use zmq with the tornado IOLoop.
+    
+  from ipykernel import kernelapp as app
+WARNING:tornado.general:403 GET /voila/files/favicon.ico (192.168.0.5): File not whitelisted
+WARNING:tornado.access:403 GET /voila/files/favicon.ico (192.168.0.5) 1.46ms
+[Voila] Adapting from protocol version 5.1 (kernel dd985352-3719-4801-a55d-4cf2325d44c6) to 5.3 (client).
+[Voila] Starting buffering for dd985352-3719-4801-a55d-4cf2325d44c6:48de9ee5-7815-4e35-8f4b-3ab531d30114
+[Voila] Kernel shutdown: dd985352-3719-4801-a55d-4cf2325d44c6
+[Voila] WARNING | WebSocket ping timeout after 197068 ms.
+[Voila] Starting buffering for 74671537-f9d4-4561-b878-132cfec7cf17:ba4eec17-58b1-42dc-9607-6d9e40c82b43

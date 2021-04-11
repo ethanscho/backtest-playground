@@ -1,11 +1,7 @@
 import pandas as pd
 from common import *
 
-NUM_STOCKS = 30
-MIN_MARKET_CAP = 0.0
-MAX_MARKET_CAP = 0.2
-
-def get_stocks(filepath, date, verbose=True):
+def get_stocks(filepath, date, min_market_cap, max_market_cap, min_fund_rank=None, max_fund_rank=None, num_stocks=30, verbose=True):
     if verbose:
         print("------------------------------")
         print(date, filepath)
@@ -35,10 +31,10 @@ def get_stocks(filepath, date, verbose=True):
     if verbose:
         print('국외주식 제외', len(df))
     
-#     # 유동비율 > 150%
-#     df = df[df['유동비율'] > 1.5]
-#     if verbose:
-#         print('유동비율 > 1', len(df))
+    # 유동비율 > 150%
+    df = df[df['유동비율'] > 1.5]
+    if verbose:
+        print('유동비율 > 1.5', len(df))
         
 #     # 주당배당금 > 0
 #     df = df[df['주당배당금'] > 0.0]
@@ -59,9 +55,11 @@ def get_stocks(filepath, date, verbose=True):
     #df_qp = exclude_minus_income_corps(df_qp, past_income_cols)
 
     # 시가총액 하위 20% 
-    df = df[df['시가총액'] > 0] # 시가총액 data가 없는 row는 제거
-    df = df.sort_values(by=['시가총액'])
-    df = df[int(len(df)*MIN_MARKET_CAP):int(len(df)*MAX_MARKET_CAP)]
+    df_qp = df[df['시가총액'] > 0] # 시가총액 data가 없는 row는 제거
+    df_qp = df_qp.sort_values(by=['시가총액'])
+    if verbose:
+        print('가격정보 없는 기업 제외', len(df_qp))
+    df_qp = df_qp[int(len(df_qp)*min_market_cap):int(len(df_qp)*max_market_cap)]
     
     # get ranks
     df['1/PBR'] = 1 / df['PBR']
@@ -72,20 +70,9 @@ def get_stocks(filepath, date, verbose=True):
 
     df = df.sort_values(by=['TOTAL_RANK'])    
     
-    stocks = []
-    counter = 0
-    for i, row in df.iterrows():
-        counter += 1
-        if counter > NUM_STOCKS:
-            break
-        
-        candidate = row['종목코드']
-        candidate_name = row['회사명']
-            
-        #print(candidate_name, row['TOTAL_RANK'])
-        stocks.append(candidate)
-    
-    if verbose:
-        print(date, "선정 기업 수", len(stocks))
-        
-    return stocks
+    if len(df_qp) > num_stocks:
+        print(date, "선정 기업 수", num_stocks)
+        return df_qp['종목코드'].tolist()[:num_stocks]
+    else:
+        print(date, "선정 기업 수", len(df_qp))
+        return df_qp['종목코드'].tolist()
