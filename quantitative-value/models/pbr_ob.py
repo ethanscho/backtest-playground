@@ -14,12 +14,14 @@ def get_stocks(filepath, date, min_market_cap, max_market_cap, min_fund_rank=Non
 #         col_name = str(year) + '-' + '당기순이익'
 #         past_income_cols.append(col_name)
         
-    cols = ['종목코드', 'IFRS', 'CFS', '회사명', '시가총액', 'PBR', 'GP/A', '당기순이익', '증자', '영업활동으로인한현금흐름', '유동비율', '주당배당금']
+    cols = ['종목코드', 'IFRS', 'CFS', '회사명', '시가총액', 'PBR', '영업이익', '자본총계', '유동비율']
     #cols.extend(past_income_cols)
 
     df = df[cols]
     if verbose:
         print('전체', len(df))
+        
+    df['OB'] = df['영업이익'] / df['자본총계']
     
     # 지주사, 금융사 제외
     df = exclude_holdings_and_finances(df, '회사명')
@@ -64,7 +66,8 @@ def get_stocks(filepath, date, min_market_cap, max_market_cap, min_fund_rank=Non
     # get ranks
     df['1/PBR'] = 1 / df['PBR']
     df['RANK_1'] = df['1/PBR'].rank(ascending=False)
-    df['RANK_2'] = df['GP/A'].rank(ascending=False) # 높을 수록 좋음
+    
+    df['RANK_2'] = df['OB'].rank(ascending=False) # 높을 수록 좋음
     
     df['TOTAL_RANK'] = df['RANK_1'] + df['RANK_2']
 
