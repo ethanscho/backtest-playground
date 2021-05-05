@@ -2,10 +2,12 @@
 __pycache__/
 log/
 *.pyc
+marcap/
 data/daily/7-1
 data/daily/9-1
 data/daily/11-1
 data/daily/12-1
 data/quarterly
 data/half-year
+quantitative-value/__pycache__
 quantitative-value/models/__pycache__/
